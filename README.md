@@ -42,7 +42,10 @@ This ensures that only one `QueueProcessor` batch job is running at any given ti
 ## Required Metadata
 
 Object 
+
 `Universal_Queue__c`
+
+
 Fields
 
 `Field1__c`
@@ -55,9 +58,16 @@ Fields
 
 `Context__c`
 
+
+
+
 Custom Setting
+
 `BatchJobStatus__c`
+
 Fields
+
 `BatchJobStarted__c`
+
 
 
