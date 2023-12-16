@@ -39,5 +39,20 @@ The `QueueProcessor` batch job processes the records from the `Universal_Queue__
 
 This ensures that only one `QueueProcessor` batch job is running at any given time, regardless of the number of transactions inserting records into the `Universal_Queue__c` object. It also ensures that all records are processed, even if they are inserted while a batch job is running.
 
-## Note
+## Required Metadata
+
+Object 
+`Universal_Queue__c`
+Fields
+`Field1__c`
+`Field2__c`
+`Field3__c`
+`Status__c`
+`Context__c`
+
+Custom Setting
+`BatchJobStatus__c`
+Fields
+`BatchJobStarted__c`
+
 
