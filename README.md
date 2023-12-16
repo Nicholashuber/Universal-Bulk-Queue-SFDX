@@ -1,6 +1,27 @@
 # Salesforce Universal Queue
 
-This project includes a Salesforce trigger and batch class that work together to process records from a custom object named `Universal_Queue__c`. The trigger starts a batch job whenever a new record is inserted into the `Universal_Queue__c` object. The batch job processes the records and updates their status. The `Universal_Queue__c` object is a staging object of sorts before any business logic takes place. This ensures we have a copy of the request to try again later.
+
+
+## Description
+
+The Universal Queue is an advanced Salesforce Apex framework that enhances asynchronous data processing and synchronization. It addresses critical challenges in Salesforce development, such as governor limit constraints, record-locking issues, and efficient management of batch and queueable jobs.
+
+## Key Features
+
+- **Dynamic Batch Processing:** Manages high-volume data operations by dynamically dividing tasks into manageable batches, optimizing Salesforce governor limits utilization.
+- **Record Locking Mitigation:** Ingeniously circumvents common record locking problems by intelligently queuing operations, thus reducing the likelihood of lock contention in high-concurrency environments.
+- **Advanced Queue Management:** Handles a vast number of records with real-time data synchronization and processing capabilities.
+- **Robust Error Handling and Monitoring:** Ensures reliability and stability with comprehensive error handling and system monitoring.
+- **Flexible Scheduling:** Supports both trigger-based initiation for immediate data processing needs and scheduled batch processing for regular, extensive data operations.
+- **Customizable and Extensible:** Adaptable to a variety of business requirements and Salesforce org configurations.
+
+## Intended Audience
+
+This framework perfectly fits Salesforce developers and architects looking for an effective solution to handle large-scale data operations, complex asynchronous processes, and concurrency challenges in Salesforce environments.
+
+
+## Overview
+This project includes a Salesforce trigger and batch class that process records from a custom object named `Universal_Queue__c`. The trigger starts a batch job whenever a new record is inserted into the `Universal_Queue__c` object. The batch job processes the records and updates their status. The `Universal_Queue__c` object is a staging object of sorts before any business logic takes place. This ensures we have a copy of the request to try again later.
 
 ## Components
 
