@@ -44,10 +44,15 @@ This ensures that only one `QueueProcessor` batch job is running at any given ti
 Object 
 `Universal_Queue__c`
 Fields
+
 `Field1__c`
+
 `Field2__c`
+
 `Field3__c`
+
 `Status__c`
+
 `Context__c`
 
 Custom Setting
