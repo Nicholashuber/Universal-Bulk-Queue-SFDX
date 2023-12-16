@@ -1,0 +1,30 @@
+trigger UniversalQueueTrigger on Universal_Queue__c (after insert) {
+
+    //static Boolean hasBatchStarted = false;
+    // Check if the trigger is running in a non-test context
+    if (!Test.isRunningTest()) {
+        // Retrieve the custom setting
+        BatchJobStatus__c batchJobStatus = BatchJobStatus__c.getInstance('Universal');
+
+        // If the custom setting doesn't exist, create it
+        if (batchJobStatus == null) {
+            batchJobStatus = new BatchJobStatus__c(Name = 'Universal');
+            insert batchJobStatus;
+        }
+
+        // Check if there's an existing batch job for the QueueProcessor class
+        Integer activeBatchJobs = [SELECT COUNT() FROM AsyncApexJob WHERE JobType = 'BatchApex'
+                                   AND ApexClass.Name = 'QueueProcessor' AND Status IN ('Processing', 'Preparing')];
+
+        // If there are no active batch jobs, start a new one
+        if (!batchJobStatus.BatchJobStarted__c) {
+            QueueProcessor batchJob = new QueueProcessor();
+            Database.executeBatch(batchJob);
+            batchJobStatus.BatchJobStarted__c = true;
+            update batchJobStatus;
+        } else {
+            // Log or handle the scenario where a batch job is already in progress
+            System.debug('A batch job is already in progress for QueueProcessor class. Skipping new job.');
+        }
+    }
+}
